@@ -16,29 +16,23 @@
     <title>Example-SMART-App</title>
   </head>
   <body>
-    <!-- Required JS files to enable this page to embed within an MPage -->
-    <!--
-      Temporarily disable cerner-smart-embeddable-lib
-      <script src='https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.min.js'></script>
-      <script src='./lib/js/cerner-smart-embeddable-lib-1.0.0.min.js'></script>
-    -->
-
-    <!-- FHIR Client JS Library -->
-    <script src='./lib/js/fhir-client-v0.1.12.js'></script>
-
-    <!-- Prevent session bleed caused by single threaded embedded browser and sessionStorage API -->
-    <!-- https://github.com/cerner/fhir-client-cerner-additions -->
-    <script src='./lib/js/fhir-client-cerner-additions-1.0.0.js'></script>
-    <script>
-      FHIR.oauth2.authorize({
-        'client_id': '432f3f4c-20c2-4e6e-8006-6e2a888fbfc1',
-        'scope':  'user/Patient.read user/Observation.read user/MedicationStatement.read launch online_access openid profile'
-      });
-    </script>
-    <div class="spinner">
-      <div class="bounce1"></div>
-      <div class="bounce2"></div>
-      <div class="bounce3"></div>
+    <h2>Example-SMART-App</h2>
+    <div id='errors'>
     </div>
+    <div id="loading">Loading...</div>
+    <script src='./lib/fhir-client.js'></script>
+    <script>
+      function ready(smart) {
+        var patient = smart.api.read({type: 'Patient', id: '711924'}).then(function(response) {
+         document.body.innerText = JSON.stringify(response);
+        });
+       }
+      function notReady() {
+        if (window.location.href.indexOf('error') < 0) {
+          document.body.innerText = "Launch first.";
+        }
+      }
+      FHIR.oauth2.ready(ready, notReady);
+    </script>
   </body>
 </html>

@@ -4,6 +4,7 @@
 	<meta http-equiv='X-UA-Compatible' content='IE=edge' />
 	<meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
 	<title>Example-SMART-App</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<style type="text/css">
 		.dataTable {width:100%;table-layout:fixed;border-collapse:collapse;}
@@ -145,7 +146,7 @@
 				if (count > 1){
 					console.log("More than one Encounter");
 					var i;
-					for(i = -1; i < count; i++){
+					for(i in response){
 						document.getElementById("fin").innerHTML = response[i]['identifier'][0]['value'];
 						document.getElementById("location").innerHTML = response[i]['location'][0]['location']['display'];
 						document.getElementById("visit").innerHTML = response[i]['reason'][0]['text'];

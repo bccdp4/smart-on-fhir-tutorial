@@ -143,7 +143,7 @@
 				console.log(response);				
 				document.getElementById("fin").innerHTML = response[0]['identifier'][0]['value'];
 			});
-			var lookbackDate = new Date();
+/*			var lookbackDate = new Date();
 			lookbackDate.setMonth(lookbackDate.getMonth()-6);
 			var month = (lookbackDate.getMonth()+1 < 10)?"0"+(lookbackDate.getMonth()+1):lookbackDate.getMonth()+1;
 			var date = (lookbackDate.getDate() < 10)?"0"+lookbackDate.getDate():lookbackDate.getDate();
@@ -177,6 +177,7 @@
 				retString += "</table>";
 				document.getElementById("obvDiv").innerHTML = retString;
 			});
+*/
 		}
 	}
 	function notReady(response) {

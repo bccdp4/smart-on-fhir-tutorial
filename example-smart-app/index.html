@@ -136,7 +136,7 @@
 				document.getElementById("age").innerHTML = calculateAge(new Date(response[0]['birthDate']));
 				document.getElementById("mrn").innerHTML = response[0]['identifier'][0]['value'];
 			});
-			patientApi.fetchAll({type:'Encounter',query:{patient:4342009}}).then(function(response) {
+			patientApi.search({type:'Encounter',query:{patient:smart.patient.id}}).then(function(response) {
 				console.log(response);
 			});
 			var lookbackDate = new Date();

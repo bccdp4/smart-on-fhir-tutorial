@@ -8,11 +8,81 @@
 		.dataTable {width:100%;table-layout:fixed;border-collapse:collapse;}
 		.dataTable td {box-sizing:border-box;border-bottom:1px solid #000;width:100%;}	
 		.dataDiv {width:100%;margin-bottom:6px;border:1px solid #000;}
+		.navbar {
+			margin-bottom: 0;
+			border-radius: 0;
+			background-color: #1A2930;
+			color: #FFF;
+			padding: 1% 0;
+			font-size: 1.2em;
+			border: 0;
+		}
+		.navbar-brand {
+			float: left;
+			min-height: 55px;
+			padding: 0 15px 5px;
+		}
+		.navbar-inverse .navbar-nav .active a, .navbar-inverse .navbar-nav .active a:focus, .navbar-inverse .navbar-nav .active a:hover {
+			color: #FFF;
+			background-color: #1A2930;
+		}
+		.navbar-inverse .navbar-nav li a {
+			color: #D5D5D5;
+		}
 	</style>
 	<link rel='stylesheet' type='text/css' href='./src/css/example-smart-app.css'>
 	<link rel='stylesheet' type='text/css' href='./lib/css/cerner-smart-embeddable-lib-1.0.0.min.css'>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	</head>
 	<body>
+		<nav class="navbar navbar-inverse">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#"> Banner Bar </a>
+				</div>
+				<div class="collapse navbar-collapse" id="myNavbar">
+					<ul class="nav navbar-nav navbar-right">
+						<li class="active">
+							<dt>Name:</dt>
+							<dd></dd>
+						</li>
+						<li class="active">
+							<dt>Gender:</dt>
+							<dd></dd>
+						</li>
+						<li class="active">
+							<dt>DOB:</dt>
+							<dd></dd>
+						</li>
+						<li class="active">
+							<dt>Age:</dt>
+							<dd></dd>
+						</li>
+						<li class="active">
+							<dt>MRN:</dt>
+							<dd></dd>
+						</li>
+						<li class="active">
+							<dt>FIN:</dt>
+							<dd></dd>
+						</li>
+						<li class="active">
+							<dt>Location:</dt>
+							<dd></dd>
+						</li>
+						<li class="active">
+							<dt>Visit Reason:</dt>
+							<dd></dd>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
 		<div id="medStatementDiv" class="dataDiv">Loading meds...</div>
 		<div id="allergyDiv" class="dataDiv">Loading allergies...</div>
 		<div id="obvDiv" class="dataDiv">Loading observations...</div>

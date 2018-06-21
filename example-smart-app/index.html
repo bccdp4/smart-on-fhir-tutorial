@@ -50,7 +50,7 @@
 					<ul class="nav navbar-nav navbar-right">
 						<li class="active">
 							<dt>Name:</dt>
-							<dd></dd>
+							<dd id="name"></dd>
 						</li>
 						<li class="active">
 							<dt>Gender:</dt>
@@ -108,12 +108,8 @@
 			var patientApi = smart.patient.api;
 			patientApi.fetchAll({type: 'Patient'}).then(function(response) {
 				console.log(response);
-				var retString = "<table class='dataTable'>";
-				response.forEach(function(medObj,idx){
-					retString += "<tr><td>"+medObj.medicationCodeableConcept.text+"</td></tr>";
-				});
-				retString += "</table>";
-				document.getElementById("medStatementDiv").innerHTML = retString;
+					
+				document.getElementById("name").innerHTML = response[0]['name'][0]['text'];
 			});
 			patientApi.fetchAll({type:'AllergyIntolerance',query:{status:'active'}}).then(function(response) {
 				var retString = "<table class='dataTable'>";

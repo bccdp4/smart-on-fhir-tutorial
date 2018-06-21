@@ -54,31 +54,31 @@
 						</li>
 						<li class="active">
 							<dt>Gender:</dt>
-							<dd></dd>
+							<dd id="gender"></dd>
 						</li>
 						<li class="active">
 							<dt>DOB:</dt>
-							<dd></dd>
+							<dd id="dob"></dd>
 						</li>
 						<li class="active">
 							<dt>Age:</dt>
-							<dd></dd>
+							<dd id="age"></dd>
 						</li>
 						<li class="active">
 							<dt>MRN:</dt>
-							<dd></dd>
+							<dd id="mrn"></dd>
 						</li>
 						<li class="active">
 							<dt>FIN:</dt>
-							<dd></dd>
+							<dd id="fin"></dd>
 						</li>
 						<li class="active">
 							<dt>Location:</dt>
-							<dd></dd>
+							<dd id="location"></dd>
 						</li>
 						<li class="active">
 							<dt>Visit Reason:</dt>
-							<dd></dd>
+							<dd id="visit"></dd>
 						</li>
 					</ul>
 				</div>
@@ -107,7 +107,7 @@
 		if (typeof smart.patient === "object") {
 			var patientApi = smart.patient.api;
 			patientApi.fetchAll({type: 'Patient'}).then(function(response) {
-				console.log('Name: ' + response[0]['name'][0]['text']);
+				console.log(response);
 					
 				document.getElementById("name").innerHTML = response[0]['name'][0]['text'];
 			});

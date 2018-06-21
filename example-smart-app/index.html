@@ -103,6 +103,10 @@
 	<script src='./lib/js/fhir-client-cerner-additions-1.0.0.js'></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script>
+	function isLeapYear(year) {
+                                return new Date(year, 1, 29).getMonth() === 1;
+                }
+
 	function calculateAge(date) {
 			if (Object.prototype.toString.call(date) === '[object Date]' && !isNaN(date.getTime())) {
 					var d = new Date(date), now = new Date();
@@ -130,6 +134,7 @@
 				document.getElementById("gender").innerHTML = response[0]['gender'];
 				document.getElementById("dob").innerHTML = response[0]['birthDate'];
 				document.getElementById("age").innerHTML = calculateAge(new Date(response[0]['birthDate']));
+				document.getElementById("mrn").innerHTML = response[0]['identifier'][0]['value'];
 			});
 			patientApi.fetchAll({type:'Encounter',query:{patient:smart.patient.id}}).then(function(response) {
 				console.log(response);

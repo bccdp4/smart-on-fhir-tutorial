@@ -145,7 +145,7 @@
 				if (count > 1){
 					console.log("More than one Encounter");
 					var i;
-					for(i = 0; i < count; i++){
+					for(i = -1; i < count; i++){
 						document.getElementById("fin").innerHTML = response[i]['identifier'][i]['value'];
 						document.getElementById("location").innerHTML = response[i]['location'][i]['location']['display'];
 						document.getElementById("visit").innerHTML = response[i]['reason'][i]['text'];

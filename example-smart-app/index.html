@@ -108,10 +108,10 @@
 			var patientApi = smart.patient.api;
 			patientApi.fetchAll({type: 'Patient'}).then(function(response) {
 				console.log(response);
-					
+				console.log(smart.patient);	
 				document.getElementById("name").innerHTML = response[0]['name'][0]['text'];
 			});
-			patientApi.fetchAll({type:'AllergyIntolerance',query:{status:'active'}}).then(function(response) {
+			patientApi.fetchAll({type:'Encounter',query:{patient:}}).then(function(response) {
 				var retString = "<table class='dataTable'>";
 				response.forEach(function(allObj,idx){
 					retString += 

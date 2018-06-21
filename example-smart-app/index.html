@@ -103,6 +103,23 @@
 	<script src='./lib/js/fhir-client-cerner-additions-1.0.0.js'></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<script>
+	function calculateAge(date) {
+			if (Object.prototype.toString.call(date) === '[object Date]' && !isNaN(date.getTime())) {
+					var d = new Date(date), now = new Date();
+					var years = now.getFullYear() - d.getFullYear();
+					d.setFullYear(d.getFullYear() + years);
+					if (d > now) {
+							years--;
+							d.setFullYear(d.getFullYear() - 1);
+					}
+					var days = (now.getTime() - d.getTime()) / (3600 * 24 * 1000);
+					return years + days / (isLeapYear(now.getFullYear()) ? 366 : 365);
+			}
+			else {
+					return undefined;
+			}
+	}
+
 	function ready(smart) {
 		if (typeof smart.patient === "object") {
 			var patientApi = smart.patient.api;
@@ -112,18 +129,10 @@
 				document.getElementById("name").innerHTML = response[0]['name'][0]['text'];
 				document.getElementById("gender").innerHTML = response[0]['gender'];
 				document.getElementById("dob").innerHTML = response[0]['birthDate'];
+				document.getElementById("age").innerHTML = calculateAge(response[0]['birthDate']);
 			});
-			patientApi.fetchAll({type:'Encounter',query:{patient:'123'}}).then(function(response) {
-				var retString = "<table class='dataTable'>";
-				response.forEach(function(allObj,idx){
-					retString += 
-						"<tr>"+
-							"<td>"+allObj.substance.text+"</td>"+
-							"<td>"+allObj.status+"</td>"+
-						"</tr>";
-				});
-				retString += "</table>";
-				document.getElementById("allergyDiv").innerHTML = retString;
+			patientApi.fetchAll({type:'Encounter',query:{patient:smart.patient.id}}).then(function(response) {
+				console.log(response);
 			});
 			var lookbackDate = new Date();
 			lookbackDate.setMonth(lookbackDate.getMonth()-6);
